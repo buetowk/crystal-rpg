@@ -54,7 +54,7 @@ var startGame = function(){
 	$("#yourScore").html(currentScore);
 	$("#targetScore").html(targetScore);
 }
-// I think this is a problem. concatination??
+
 var addValues = function(crystal){
 	currentScore = currentScore + crystal.value;
 
