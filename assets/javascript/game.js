@@ -42,7 +42,7 @@ var getRandom = function(min, max){
 
 var startGame = function(){
 
-	var currentScore = 0;
+	currentScore = 0;
 
 	targetScore = getRandom(19,120);
 
@@ -54,11 +54,34 @@ var startGame = function(){
 	$("#yourScore").html(currentScore);
 	$("#targetScore").html(targetScore);
 }
-
+// I think this is a problem. concatination??
 var addValues = function(crystal){
 	currentScore = currentScore + crystal.value;
+
+	$("#yourScore").html(currentScore);
+
+	checkMin()
 }
 
+var checkMin = function() {
+	if (currentScore > targetScore) {
+		alert("Sorry, You lost.");
+
+		lossCount++;
+		$("#lossCount").html(lossCount);
+
+		startGame();
+	}
+
+	else if (currentScore == targetScore) {
+		alert("Congratulation! You won!");
+
+		winCount++;
+		$("#winCount").html(lossCount);
+
+		startGame();
+	}
+}
 
 //Process
 startGame();
@@ -68,15 +91,15 @@ $("#red").click(function(){
 });
 
 $("#yellow").click(function(){
-	adValues(crystal.yellow);
+	addValues(crystal.yellow);
 });
 
 $("#blue").click(function(){
-	adValues(crystal.blue);
+	addValues(crystal.blue);
 });
 
 $("#green").click(function(){
-	adValues(crystal.green);
+	addValues(crystal.green);
 });
 
 
